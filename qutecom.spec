@@ -1,12 +1,14 @@
-Name:		wengophone
-Version:	2.1.99.2
-Release:	%mkrel 9
+%define oversion RC1
+Name:		qutecom
+Version:	2.2
+Release:	%mkrel 0.%oversion.1
 Summary:	Internet phone software
 License:	GPLv2+
 Group:		Networking/Instant messaging
-URL:		http://www.openwengo.org/
-Source:		http://download.wengo.com/nightlybuilds/universal/sources/openwengo/%{version}/%{name}-%{version}-source.tar.bz2
+URL:		http://www.qutecom.com
+Source:		http://www.qutecom.com/downloads/qutecom-%version-%oversion.tar.gz
 Patch1:		wengophone-2.1.99.1-fix-desktopfile.patch
+Patch2:         wengophone-2.2-fix-ffmpeg-cmake.patch
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	cmake
 BuildRequires:	qt4-devel
@@ -32,12 +34,6 @@ Wengophone is a SIP softphone which allows you to make free PC to PC
 video and voice calls, and to integrate all your IM contacts in one
 place.
 
-%post 
-%update_icon_cache hicolor
- 
-%postun 
-%clean_icon_cache hicolor
-
 %files
 %doc wengophone/AUTHORS
 %defattr(-,root,root)
@@ -50,16 +46,11 @@ place.
 #--------------------------------------------------------------------
 
 %prep
-%setup -q -n %name-%version-source
-%patch1 -p0
+%setup -q -n %name-%version-%oversion
+%patch2 -p0
 
 %build
-%cmake_qt4 \
-	-DPORTAUDIO_INTERNAL=OFF \
-	-DFFMPEG_INTERNAL=OFF \
-	-DSPEEX_INTERNAL=OFF \
-	-DSAMPLERATE_INTERNAL=OFF \
-	-DCURL_INTERNAL=OFF
+%cmake_qt4 
 
 %make VERBOSE=1
 make lupdate VERBOSE=1
