@@ -1,4 +1,5 @@
 %define oversion RC1
+
 Name:		qutecom
 Version:	2.2
 Release:	%mkrel 0.%oversion.1
@@ -7,8 +8,8 @@ License:	GPLv2+
 Group:		Networking/Instant messaging
 URL:		http://www.qutecom.com
 Source:		http://www.qutecom.com/downloads/qutecom-%version-%oversion.tar.gz
-Patch1:		wengophone-2.1.99.1-fix-desktopfile.patch
-Patch2:         wengophone-2.2-fix-ffmpeg-cmake.patch
+Patch1:		%name-2.2-fix-desktopfile.patch
+Patch2:         %name-2.2-fix-build.patch
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	cmake
 BuildRequires:	qt4-devel
