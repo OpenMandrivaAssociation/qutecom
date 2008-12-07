@@ -44,7 +44,7 @@ place.
 %defattr(-,root,root)
 %{_bindir}/%{name}
 %{_datadir}/%{name}
-%{_libdir}/%{name}
+%{_libdir}/wengophone
 %{_datadir}/applications/%{name}.desktop
 %{_iconsdir}/hicolor/*/apps/*.png
 
