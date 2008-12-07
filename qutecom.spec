@@ -35,7 +35,7 @@ Obsoletes:	openwengo
 Obsoletes:	%mklibname %{name} 0
 
 %description
-Wengophone is a SIP softphone which allows you to make free PC to PC
+QuteCom is a SIP softphone which allows you to make free PC to PC
 video and voice calls, and to integrate all your IM contacts in one
 place.
 
@@ -67,7 +67,6 @@ cd build_openwengo
   -DDBUS_INTERFACES_DIR=/usr/share/dbus-1/interfaces
 
 %make
-#make lupdate VERBOSE=1
 
 %install
 rm -rf $RPM_BUILD_ROOT
