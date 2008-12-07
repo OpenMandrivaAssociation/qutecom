@@ -1,9 +1,9 @@
-%define oversion RC1
+%define oversion RC2
 %define mercurial 20081207
 
 Name:		qutecom
 Version:	2.2
-Release:	%mkrel 0.%oversion.1
+Release:	%mkrel 0.%oversion.%mercurial.1
 Summary:	Internet phone software
 License:	GPLv2+
 Group:		Networking/Instant messaging
