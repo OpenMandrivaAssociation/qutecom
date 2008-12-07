@@ -1,4 +1,5 @@
 %define oversion RC1
+%define mercurial 20081207
 
 Name:		qutecom
 Version:	2.2
@@ -7,7 +8,7 @@ Summary:	Internet phone software
 License:	GPLv2+
 Group:		Networking/Instant messaging
 URL:		http://www.qutecom.com
-Source:		http://www.qutecom.com/downloads/qutecom-%version-%oversion.tar.gz
+Source:		http://www.qutecom.com/downloads/qutecom-%version-hg%mercurial.tar.bz2
 Patch1:		%name-2.2-fix-desktopfile.patch
 Patch2:         %name-2.2-fix-build.patch
 BuildRoot:	%{_tmppath}/%{name}-buildroot
@@ -39,29 +40,37 @@ place.
 %doc wengophone/AUTHORS
 %defattr(-,root,root)
 %{_bindir}/%{name}
-%{_datadir}/%{name}
-%{_libdir}/%{name}
+#%{_datadir}/%{name}
+%{_datadir}/wengophone
+#%{_libdir}/%{name}
+%{_libdir}/wengophone
 %{_datadir}/applications/%{name}.desktop
 %{_iconsdir}/hicolor/*/apps/*.png
 
 #--------------------------------------------------------------------
 
 %prep
-%setup -q -n %name-%version-%oversion
-%patch2 -p0
+%setup -q -n %name-%version
+%patch2 -p1
 
 %build
-%cmake_qt4 
+mkdir build_openwengo
+cd build_openwengo
+  /usr/bin/cmake .. \
+  %if "lib" != "lib"
+    -DLIB_SUFFIX=64 \
+  %endif
+  -DCMAKE_INSTALL_PREFIX=/usr \
+  -DDBUS_SERVICES_DIR=/usr/share/dbus-1/services \
+  -DDBUS_INTERFACES_DIR=/usr/share/dbus-1/interfaces
 
-%make VERBOSE=1
-make lupdate VERBOSE=1
+%make
+#make lupdate VERBOSE=1
 
 %install
 rm -rf $RPM_BUILD_ROOT
-cd build
+cd build_openwengo
 %makeinstall_std
-
-rm -f %{buildroot}%{_datadir}/wengophone/COPYING %{buildroot}%{_datadir}/wengophone/AUTHORS
 
 %clean
 rm -rf $RPM_BUILD_ROOT
