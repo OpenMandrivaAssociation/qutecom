@@ -10,7 +10,8 @@ Group:		Networking/Instant messaging
 URL:		http://www.qutecom.com
 Source:		http://www.qutecom.com/downloads/qutecom-%version-hg%mercurial.tar.bz2
 Patch1:		%name-2.2-fix-desktopfile.patch
-Patch2:         %name-2.2-fix-build.patch
+Patch2:     %name-2.2-fix-build.patch
+Patch3:     qutecom-2.2-fix-build-x86-64.patch
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	cmake
 BuildRequires:	qt4-devel
@@ -52,6 +53,7 @@ place.
 %prep
 %setup -q -n %name-%version
 %patch2 -p1
+%patch3 -p0
 
 %build
 mkdir build_openwengo
