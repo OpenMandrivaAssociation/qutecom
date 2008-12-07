@@ -55,6 +55,8 @@ place.
 %patch2 -p1
 %patch3 -p0
 %patch4 -p1
+%patch5 -p1
+
 %build
 mkdir build_openwengo
 cd build_openwengo
