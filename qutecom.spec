@@ -3,7 +3,7 @@
 
 Name:		qutecom
 Version:	2.2
-Release:	%mkrel 0.%oversion.%mercurial.2
+Release:	%mkrel 0.%oversion.%mercurial.3
 Summary:	Internet phone software
 License:	GPLv2+
 Group:		Networking/Instant messaging
@@ -32,6 +32,8 @@ BuildRequires:	curl-devel
 BuildRequires:	desktop-file-utils
 BuildRequires:	python-devel
 Obsoletes:	openwengo
+Obsoletes:	wengophone
+Provides:	wengophone
 Obsoletes:	%mklibname %{name} 0
 
 %description
