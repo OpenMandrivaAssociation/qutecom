@@ -1,19 +1,18 @@
-%define oversion RC2
+%define oversion RC3
 %define mercurial 20081207
 
 Name:		qutecom
 Version:	2.2
-Release:	%mkrel 0.%oversion.%mercurial.3
+Release:	%mkrel 0.%oversion.1
 Summary:	Internet phone software
 License:	GPLv2+
 Group:		Networking/Instant messaging
 URL:		http://www.qutecom.com
-Source:		http://www.qutecom.com/downloads/qutecom-%version-hg%mercurial.tar.bz2
-Patch1:		%name-2.2-fix-desktopfile.patch
-Patch2:     %name-2.2-fix-build.patch
-Patch3:     qutecom-2.2-fix-build-x86-64.patch
-Patch4:     qutecom-2.2-fix-install.patch
-Patch5:     qutecom-2.2-fix-quotes.patch
+Source:		http://www.qutecom.com/downloads/qutecom-%version-%oversion.tar.gz
+Patch1:		qutecom_googlebreakpad_64.patch
+Patch2:     qutecom_pixertool_ffmpeg.patch 
+Patch3:     qutecom_presentation_install.patch 
+Patch4:     qutecom_wifo_phapi.patch 
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	cmake
 BuildRequires:	qt4-devel
@@ -46,19 +45,18 @@ place.
 %defattr(-,root,root)
 %{_bindir}/%{name}
 %{_datadir}/%{name}
-%{_libdir}/wengophone
+%{_libdir}/%name
 %{_datadir}/applications/%{name}.desktop
 %{_iconsdir}/hicolor/*/apps/*.png
 
 #--------------------------------------------------------------------
 
 %prep
-%setup -q -n %name-%version
+%setup -q -n %name-%version-%oversion
+%patch1 -p1
 %patch2 -p1
-%patch3 -p0
+%patch3 -p1
 %patch4 -p1
-%patch5 -p1
-
 %build
 mkdir build_openwengo
 cd build_openwengo
