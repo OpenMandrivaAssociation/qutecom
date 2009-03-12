@@ -3,7 +3,7 @@
 
 Name:		qutecom
 Version:	2.2
-Release:	%mkrel 0.%oversion.2
+Release:	%mkrel 0.%oversion.3
 Summary:	Internet phone software
 License:	GPLv2+
 Group:		Networking/Instant messaging
@@ -71,9 +71,9 @@ cd build_openwengo
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 cd build_openwengo
 %makeinstall_std
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
