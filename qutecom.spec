@@ -1,14 +1,14 @@
 %define oversion RC3
-%define mercurial 20081207
+%define mercurial 20090825
 
 Name:		qutecom
 Version:	2.2
-Release:	%mkrel 0.%oversion.3
+Release:	%mkrel 0.%oversion.4
 Summary:	Internet phone software
 License:	GPLv2+
 Group:		Networking/Instant messaging
 URL:		http://www.qutecom.com
-Source:		http://www.qutecom.com/downloads/qutecom-%version-%oversion.tar.gz
+Source:		http://www.qutecom.com/downloads/qutecom-%version.%mercurial.tar.bz2
 Patch1:		qutecom_googlebreakpad_64.patch
 Patch2:     qutecom_pixertool_ffmpeg.patch 
 Patch3:     qutecom_presentation_install.patch 
@@ -30,6 +30,7 @@ BuildRequires:	libsndfile-devel
 BuildRequires:	curl-devel
 BuildRequires:	desktop-file-utils
 BuildRequires:	python-devel
+BuildRequires:  libuuid-devel
 Obsoletes:	openwengo
 Obsoletes:	wengophone
 Provides:	wengophone
@@ -47,16 +48,19 @@ place.
 %{_datadir}/%{name}
 %{_libdir}/%name
 %{_datadir}/applications/%{name}.desktop
+%{_libdir}/pm-utils/sleep.d/70QuteCom
 %{_iconsdir}/hicolor/*/apps/*.png
 
 #--------------------------------------------------------------------
 
 %prep
-%setup -q -n %name-%version-%oversion
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%setup -q -n %name-%version
+
+#%patch1 -p1
+#%patch2 -p1
+#%patch3 -p1
+#%patch4 -p1
+
 %build
 mkdir build_openwengo
 cd build_openwengo
