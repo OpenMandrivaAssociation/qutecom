@@ -3,7 +3,7 @@
 
 Name:		qutecom
 Version:	2.2
-Release:	%mkrel 0.%oversion.5
+Release:	%mkrel 0.%oversion.6
 Summary:	Internet phone software
 License:	GPLv2+
 Group:		Networking/Instant messaging
