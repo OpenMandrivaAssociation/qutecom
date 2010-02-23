@@ -1,18 +1,14 @@
-%define oversion RC3
-%define mercurial 20090825
-
 Name:		qutecom
 Version:	2.2
-Release:	%mkrel 0.%oversion.6
+Release:	%mkrel 1
 Summary:	Internet phone software
 License:	GPLv2+
 Group:		Networking/Instant messaging
 URL:		http://www.qutecom.com
-Source:		http://www.qutecom.com/downloads/qutecom-%version.%mercurial.tar.bz2
-Patch1:		qutecom_googlebreakpad_64.patch
-Patch2:     qutecom_pixertool_ffmpeg.patch 
-Patch3:     qutecom_presentation_install.patch 
-Patch4:     qutecom_wifo_phapi.patch 
+Source:		http://www.qutecom.com/downloads/qutecom-%version.tar.xz
+Patch0:		qutecom-2.2-fix-link.patch
+Patch1:		qutecom-2.2-fix-str-fmt.patch
+Patch2:		qutecom-2.2-fix-install-perm.patch
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	cmake
 BuildRequires:	qt4-devel
@@ -42,42 +38,29 @@ video and voice calls, and to integrate all your IM contacts in one
 place.
 
 %files
-%doc wengophone/AUTHORS
+#doc wengophone/AUTHORS
 %defattr(-,root,root)
 %{_bindir}/%{name}
 %{_datadir}/%{name}
 %{_libdir}/%name
 %{_datadir}/applications/%{name}.desktop
-%{_libdir}/pm-utils/sleep.d/70QuteCom
+%attr(0755,root,root) %{_libdir}/pm-utils/sleep.d/70QuteCom
 %{_iconsdir}/hicolor/*/apps/*.png
-
 #--------------------------------------------------------------------
 
 %prep
 %setup -q -n %name-%version
-
-#%patch1 -p1
-#%patch2 -p1
-#%patch3 -p1
-#%patch4 -p1
+%patch0 -p0
+%patch1 -p0
+%patch2 -p0
 
 %build
-mkdir build_openwengo
-cd build_openwengo
-  /usr/bin/cmake .. \
-  %if "%_lib" != "lib"
-    -DLIB_SUFFIX=64 \
-  %endif
-  -DCMAKE_INSTALL_PREFIX=/usr \
-  -DDBUS_SERVICES_DIR=/usr/share/dbus-1/services \
-  -DDBUS_INTERFACES_DIR=/usr/share/dbus-1/interfaces
-
+%cmake
 %make
 
 %install
 rm -rf %{buildroot}
-cd build_openwengo
-%makeinstall_std
+%makeinstall_std -C build
 
 %clean
 rm -rf %{buildroot}
