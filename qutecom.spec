@@ -38,7 +38,6 @@ video and voice calls, and to integrate all your IM contacts in one
 place.
 
 %files
-#doc wengophone/AUTHORS
 %defattr(-,root,root)
 %{_bindir}/%{name}
 %{_datadir}/%{name}
@@ -55,7 +54,7 @@ place.
 %patch2 -p0
 
 %build
-%cmake
+%cmake -DENABLE_CRASHREPORT=OFF
 %make
 
 %install
