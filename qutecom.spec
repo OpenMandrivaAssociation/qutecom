@@ -1,6 +1,6 @@
 Name:		qutecom
 Version:	2.2
-Release:	%mkrel 2
+Release:	%mkrel 3
 Summary:	Internet phone software
 License:	GPLv2+
 Group:		Networking/Instant messaging
@@ -54,9 +54,14 @@ place.
 %patch2 -p0
 
 %build
-%cmake -DENABLE_CRASHREPORT=OFF \
-       -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
-       -DCMAKE_INSTALL_RPATH=%{_libdir}/qutecom
+cd build
+cmake .. \
+        -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+        -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib \
+        -DLIB_INSTALL_DIR:PATH=/usr/lib \
+        -DENABLE_CRASHREPORT=OFF \
+        -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+        -DCMAKE_INSTALL_RPATH=%{_libdir}/qutecom
 %make
 
 %install
