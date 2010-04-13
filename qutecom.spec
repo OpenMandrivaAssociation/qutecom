@@ -54,7 +54,9 @@ place.
 %patch2 -p0
 
 %build
-%cmake -DENABLE_CRASHREPORT=OFF
+%cmake -DENABLE_CRASHREPORT=OFF \
+       -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+       -DCMAKE_INSTALL_RPATH=%{_libdir}/qutecom
 %make
 
 %install
