@@ -57,8 +57,8 @@ place.
 cd build
 cmake .. \
         -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-        -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib \
-        -DLIB_INSTALL_DIR:PATH=/usr/lib \
+        -DCMAKE_INSTALL_LIBDIR:PATH=%_libdir \
+        -DLIB_INSTALL_DIR:PATH=%_libdir \
         -DENABLE_CRASHREPORT=OFF \
         -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
         -DCMAKE_INSTALL_RPATH=%{_libdir}/qutecom
