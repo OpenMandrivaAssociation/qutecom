@@ -50,7 +50,7 @@ place.
 
 %prep
 %setup -q -n %name-%version
-%patch0 -p0
+%patch0 -p0 -b .link
 %patch1 -p0
 %patch2 -p0
 %patch3 -p1
