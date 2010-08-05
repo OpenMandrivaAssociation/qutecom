@@ -9,6 +9,7 @@ Source:		http://www.qutecom.com/downloads/qutecom-%version.tar.xz
 Patch0:		qutecom-2.2-fix-link.patch
 Patch1:		qutecom-2.2-fix-str-fmt.patch
 Patch2:		qutecom-2.2-fix-install-perm.patch
+Patch3:		qutecom-2.2-ffmpeg-0.6.patch
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	cmake
 BuildRequires:	qt4-devel
@@ -52,14 +53,10 @@ place.
 %patch0 -p0
 %patch1 -p0
 %patch2 -p0
+%patch3 -p1
 
 %build
-cd build
-cmake .. \
-        -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-        -DCMAKE_INSTALL_LIBDIR:PATH=%_libdir \
-        -DLIB_INSTALL_DIR:PATH=%_libdir \
-        -DENABLE_CRASHREPORT=OFF \
+%cmake \
         -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
         -DCMAKE_INSTALL_RPATH=%{_libdir}/qutecom
 %make
