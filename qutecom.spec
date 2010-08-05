@@ -28,6 +28,7 @@ BuildRequires:	curl-devel
 BuildRequires:	desktop-file-utils
 BuildRequires:	python-devel
 BuildRequires:  libuuid-devel
+BuildRequires:	w3c-libwww-devel
 Obsoletes:	openwengo
 Obsoletes:	wengophone
 Provides:	wengophone
