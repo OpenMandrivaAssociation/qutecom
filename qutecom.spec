@@ -10,6 +10,7 @@ Patch0:		qutecom-2.2-fix-link.patch
 Patch1:		qutecom-2.2-fix-str-fmt.patch
 Patch2:		qutecom-2.2-fix-install-perm.patch
 Patch3:		qutecom-2.2-ffmpeg-0.6.patch
+Patch4:		qutecom-2.2-googlebreakpad-fix-build.patch
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	cmake
 BuildRequires:	qt4-devel
@@ -55,6 +56,7 @@ place.
 %patch1 -p0
 %patch2 -p0
 %patch3 -p1
+%patch4 -p1 -b .googlebreakpad
 
 %build
 %cmake \
