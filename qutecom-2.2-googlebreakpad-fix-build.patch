@@ -1,0 +1,10 @@
+--- qutecom-2.2/libs/3rdparty/googlebreakpad/src/common/linux/file_id.cc.orig	2010-12-30 22:53:13.550306873 +0200
++++ qutecom-2.2/libs/3rdparty/googlebreakpad/src/common/linux/file_id.cc	2010-12-30 22:53:21.430655074 +0200
+@@ -40,6 +40,7 @@
+ #include <sys/mman.h>
+ #include <string.h>
+ #include <unistd.h>
++#include <sys/stat.h>
+ 
+ #include "common/linux/file_id.h"
+ #include "common/md5.h"

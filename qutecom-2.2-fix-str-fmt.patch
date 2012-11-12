@@ -1,0 +1,35 @@
+--- wifo/libosip2/src/osipparser2/osip_message_parse.c.str	2010-02-23 23:38:54.000000000 +0100
++++ wifo/libosip2/src/osipparser2/osip_message_parse.c	2010-02-23 23:39:09.000000000 +0100
+@@ -809,7 +809,7 @@
+     size_t len = strlen (ct_param->gvalue);
+ 
+     sep_boundary = (char *) osip_malloc (len + sizeof (boundary_prefix));
+-    sprintf (sep_boundary, boundary_prefix);
++    sprintf (sep_boundary, "%s", boundary_prefix);
+     if (ct_param->gvalue[0] == '"' && ct_param->gvalue[len - 1] == '"')
+       strncat (sep_boundary, ct_param->gvalue + 1, len - 2);
+     else
+--- wifo/phapi/phlog.c.str	2010-02-23 23:41:16.000000000 +0100
++++ wifo/phapi/phlog.c	2010-02-23 23:41:32.000000000 +0100
+@@ -76,7 +76,7 @@
+     if (j)
+     {
+       format[j] = '\0';
+-      count += fprintf(log_file, format);    /* log it verbatim              */
++      count += fprintf(log_file, "%s", format);    /* log it verbatim              */
+       fmt += j;
+     }
+     else
+--- wifo/phapi/phmedia-audio-file.c.str	2010-02-23 23:42:14.000000000 +0100
++++ wifo/phapi/phmedia-audio-file.c	2010-02-23 23:42:33.000000000 +0100
+@@ -149,8 +149,8 @@
+     spk_tmpfilename = DFLT_AD_FILE_SPK_FILE;
+   }
+ 
+-  snprintf(pd->mic_filename, 128, mic_tmpfilename);
+-  snprintf(pd->spk_filename, 128, spk_tmpfilename);
++  snprintf(pd->mic_filename, 128, "%s", mic_tmpfilename);
++  snprintf(pd->spk_filename, 128, "%s", spk_tmpfilename);
+   
+   pd->mic_fd = fopen(pd->mic_filename,"rb");
+   if (!pd->mic_fd)

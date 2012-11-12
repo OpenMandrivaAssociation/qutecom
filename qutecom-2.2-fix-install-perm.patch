@@ -1,0 +1,12 @@
+--- wengophone/src/presentation/qt/CMakeLists-install-linux.txt.install	2010-02-24 00:25:48.000000000 +0100
++++ wengophone/src/presentation/qt/CMakeLists-install-linux.txt	2010-02-24 00:27:44.000000000 +0100
+@@ -73,7 +73,8 @@
+ install(FILES
+ 	${CMAKE_SOURCE_DIR}/wengophone/res/70QuteCom
+ 	DESTINATION lib${LIB_SUFFIX}/pm-utils/sleep.d
+-	PERMISSIONS OWNER_EXECUTE GROUP_EXECUTE WORLD_EXECUTE)
++	PERMISSIONS OWNER_READ GROUP_READ WORLD_READ OWNER_WRITE
++		OWNER_EXECUTE GROUP_EXECUTE WORLD_EXECUTE)
+ 
+ install(FILES
+ 	${CMAKE_SOURCE_DIR}/wengophone/res/qutecom.desktop

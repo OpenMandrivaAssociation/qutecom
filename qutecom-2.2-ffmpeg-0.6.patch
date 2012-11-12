@@ -1,0 +1,24 @@
+
+--- a/libs/3rdparty/ffmpeg/CMakeLists-external.txt	Mon Jan 28 20:19:41 2008 +0100
++++ b/libs/3rdparty/ffmpeg/CMakeLists-external.txt	Sun Jun 20 18:37:26 2010 +0200
+@@ -7,3 +7,9 @@
+ ow_use_public_libraries(
+ 	FFMPEG
+ )
++
++if(LINUX)
++	ow_add_public_definitions(
++		-D__STDC_CONSTANT_MACROS
++	)
++endif(LINUX)
+
+--- qutecom-2.2/libs/webcam/src/v4l2/V4L2WebcamDriver.cpp	2009-12-21 20:35:52.000000000 +0200
++++ qutecom-2.2/libs/webcam/src/v4l2/V4L2WebcamDriver.cpp	2010-05-16 03:38:21.000000000 +0300
+@@ -29,6 +29,8 @@
+ #include <errno.h>
+ #include <sys/mman.h>
+ #include <sys/ioctl.h>
++#include <sys/stat.h>
++#include <linux/stat.h>
+ #include <time.h>
+ #include <iostream>

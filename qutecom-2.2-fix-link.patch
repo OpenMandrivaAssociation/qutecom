@@ -1,0 +1,36 @@
+--- libs/3rdparty/psiidle/psiidle/CMakeLists.txt.link	2010-02-23 23:49:25.000000000 +0100
++++ libs/3rdparty/psiidle/psiidle/CMakeLists.txt	2010-02-23 23:49:46.000000000 +0100
+@@ -46,6 +46,7 @@
+ 			-DHAVE_XSS
+ 		)
+ 		ow_add_private_libraries(
++			X11
+ 			Xss
+ 		)
+ 	else (LIBXSS_LINK_FLAGS)
+--- wifo/phapi/CMakeLists.txt.link	2010-02-23 23:45:42.000000000 +0100
++++ wifo/phapi/CMakeLists.txt	2010-02-23 23:47:27.000000000 +0100
+@@ -241,6 +241,7 @@
+ 		)
+ 
+ 		ow_add_private_libraries(
++			dl
+ 			pthread
+ 			rt
+ 		)
+--- libs/3rdparty/googlebreakpad/CMakeLists-internal-unix.txt.link	2010-01-20 16:19:25.000000000 +0100
++++ libs/3rdparty/googlebreakpad/CMakeLists-internal-unix.txt	2010-08-05 16:19:24.000000000 +0200
+@@ -6,6 +6,8 @@
+ 	${CMAKE_CURRENT_SOURCE_DIR}/src/client/linux/handler
+ )	
+ 
++ow_add_private_libraries(md5)
++
+ ow_add_sources(
+     src/common/convert_UTF.c
+ 	src/common/string_conversion.cc
+@@ -25,4 +27,3 @@
+ )
+ 
+ ow_create_project_binary()
+-
