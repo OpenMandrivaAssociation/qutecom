@@ -4,7 +4,7 @@ Release:	7
 Summary:	Internet phone software
 License:	GPLv2+
 Group:		Networking/Instant messaging
-URL:		http://www.qutecom.com
+URL:		https://www.qutecom.com
 Source:		http://www.qutecom.com/downloads/qutecom-%version.tar.xz
 Patch0:		qutecom-2.2-fix-link.patch
 Patch1:		qutecom-2.2-fix-str-fmt.patch
